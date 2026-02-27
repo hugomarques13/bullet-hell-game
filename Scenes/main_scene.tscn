@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://hp2b6531m2kq"]
+
+[ext_resource type="PackedScene" uid="uid://br5nqsmxho0b6" path="res://Prefabs/player.tscn" id="1_6l7je"]
+[ext_resource type="Texture2D" uid="uid://dnri1tjd5r5p0" path="res://Sprites/Enemy/bbb.png" id="2_jv6wh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
+size = Vector2(1153, 1298)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv6wh"]
+size = Vector2(9, 1300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6ack"]
+size = Vector2(9, 1173)
+
+[node name="MainScene" type="Node2D" unique_id=1578074869]
+
+[node name="Player" parent="." unique_id=233873264 instance=ExtResource("1_6l7je")]
+position = Vector2(576, 324)
+
+[node name="Bbb" type="Sprite2D" parent="." unique_id=881455921]
+position = Vector2(576, 1)
+texture = ExtResource("2_jv6wh")
+
+[node name="CameraBounds" type="Area2D" parent="." unique_id=1007109586]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=1431407369]
+position = Vector2(575.5, -1)
+shape = SubResource("RectangleShape2D_6l7je")
+debug_color = Color(0.77254903, 0.44313726, 0.12156863, 0.41960785)
+
+[node name="Collisions" type="StaticBody2D" parent="." unique_id=1751032166]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" unique_id=871227670]
+position = Vector2(-5.5, -1)
+shape = SubResource("RectangleShape2D_jv6wh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions" unique_id=1748542900]
+position = Vector2(1156, -1)
+shape = SubResource("RectangleShape2D_jv6wh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions" unique_id=1563242226]
+position = Vector2(576.5, 652)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_x6ack")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions" unique_id=2012364356]
+position = Vector2(574, -655)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_x6ack")

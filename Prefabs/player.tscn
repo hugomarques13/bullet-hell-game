@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://br5nqsmxho0b6"]
+
+[ext_resource type="Script" uid="uid://cbdxxqwnlbi34" path="res://Scripts/character_body_2d.gd" id="1_juxdh"]
+[ext_resource type="Texture2D" uid="uid://b60xmycg23tfo" path="res://Sprites/Player/homem_cabela.png" id="2_4qbli"]
+[ext_resource type="Texture2D" uid="uid://bfdj1i1e1eefp" path="res://Sprites/Player/homem_corpo.png" id="3_08u7w"]
+[ext_resource type="Texture2D" uid="uid://y6i2kbik0ovh" path="res://Sprites/Player/homemb1.png" id="4_kgmex"]
+[ext_resource type="Texture2D" uid="uid://de31hxu35raxs" path="res://Sprites/Player/homemb2.png" id="5_2xbkd"]
+[ext_resource type="Texture2D" uid="uid://di6qs40lh20n7" path="res://Sprites/Player/homemb3.png" id="6_3vpsw"]
+[ext_resource type="Texture2D" uid="uid://bedf5odawqllj" path="res://Sprites/Player/homemb4.png" id="7_m62uw"]
+[ext_resource type="Script" uid="uid://c43sfu6t7sb5e" path="res://Prefabs/camera_2d.gd" id="8_4qbli"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x6ack"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4qbli")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6l7je"]
+height = 38.0
+
+[node name="Player" type="Node2D" unique_id=233873264]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1143892939]
+script = ExtResource("1_juxdh")
+
+[node name="Head" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=30749720]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_x6ack")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1550750567]
+z_index = 10
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_6l7je")
+
+[node name="Torso" type="Sprite2D" parent="CharacterBody2D" unique_id=297274458]
+z_index = 1
+texture = ExtResource("3_08u7w")
+
+[node name="FrontLeftLeg" type="Sprite2D" parent="CharacterBody2D" unique_id=823085229]
+position = Vector2(-1, 0)
+texture = ExtResource("4_kgmex")
+
+[node name="FrontRightLeg" type="Sprite2D" parent="CharacterBody2D" unique_id=873497369]
+position = Vector2(1, 0)
+texture = ExtResource("5_2xbkd")
+
+[node name="BackLeftLeg" type="Sprite2D" parent="CharacterBody2D" unique_id=2346635]
+texture = ExtResource("6_3vpsw")
+
+[node name="BackRightLeg" type="Sprite2D" parent="CharacterBody2D" unique_id=908483726]
+texture = ExtResource("7_m62uw")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1096316581]
+script = ExtResource("8_4qbli")
