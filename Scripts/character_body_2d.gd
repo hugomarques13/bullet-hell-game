@@ -191,7 +191,7 @@ func on_ending_part_eaten():
 func _go_to_credits():
 	TransitionScreen.transition()
 	await TransitionScreen.on_transition_finished
-	var credits_scene = preload("res://Scenes/Credits.tscn").instantiate()
+	var credits_scene = preload("res://Scenes/credits.tscn").instantiate()
 	get_tree().current_scene.queue_free()
 	get_tree().root.add_child(credits_scene)
 	get_tree().current_scene = credits_scene

@@ -13,6 +13,7 @@ config_version=5
 config/name="Bullet hell game"
 run/main_scene="uid://dwsdh6vwl7osv"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/image="uid://w8rj2rikbiae"
 config/icon="res://Sprites/icon.svg"
 
 [autoload]
