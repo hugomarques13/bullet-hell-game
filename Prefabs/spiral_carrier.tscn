@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ctxh0cgemw0tc"]
+
+[ext_resource type="Script" uid="uid://cwoxr5xgjnvps" path="res://Scripts/spiral_carrier.gd" id="1_l84tx"]
+[ext_resource type="Texture2D" uid="uid://g4q45peweag4" path="res://Sprites/Projectiles/floor1.png" id="2_8dqcl"]
+
+[sub_resource type="Shader" id="Shader_s24r4"]
+code = "shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y6dx"]
+shader = SubResource("Shader_s24r4")
+shader_parameter/invert_colors = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uwggd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8dqcl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Spiral Carrier" type="Area2D" unique_id=181077927 groups=["Projectile"]]
+z_index = 10
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_l84tx")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=348708651]
+material = SubResource("ShaderMaterial_3y6dx")
+scale = Vector2(0.85, 0.85)
+sprite_frames = SubResource("SpriteFrames_uwggd")

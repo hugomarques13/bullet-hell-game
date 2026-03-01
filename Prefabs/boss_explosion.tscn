@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://cjhtyswjpm42v"]
+
+[ext_resource type="Texture2D" uid="uid://bxhmjaqwv6hyy" path="res://Sprites/Baby Spiders/expl1.png" id="1_r6s5h"]
+
+[sub_resource type="Shader" id="Shader_g0hho"]
+code = "shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eplxj"]
+shader = SubResource("Shader_g0hho")
+shader_parameter/invert_colors = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmjkf"]
+atlas = ExtResource("1_r6s5h")
+region = Rect2(0, 0, 138, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00i3g"]
+atlas = ExtResource("1_r6s5h")
+region = Rect2(138, 0, 138, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq5t4"]
+atlas = ExtResource("1_r6s5h")
+region = Rect2(276, 0, 138, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2rn4"]
+atlas = ExtResource("1_r6s5h")
+region = Rect2(414, 0, 138, 139)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac6kv"]
+atlas = ExtResource("1_r6s5h")
+region = Rect2(552, 0, 138, 139)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvnna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmjkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00i3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq5t4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2rn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac6kv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Shader" id="Shader_pi14b"]
+code = "shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_feuu3"]
+shader = SubResource("Shader_pi14b")
+shader_parameter/invert_colors = true
+
+[node name="BossExplosion" type="Area2D" unique_id=898600577]
+scale = Vector2(3.905, 3.905)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1131181086]
+z_index = -2
+material = SubResource("ShaderMaterial_eplxj")
+rotation = -0.215921
+sprite_frames = SubResource("SpriteFrames_jvnna")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="." unique_id=172718580]
+z_index = -2
+material = SubResource("ShaderMaterial_feuu3")
+rotation = 0.6247969
+sprite_frames = SubResource("SpriteFrames_jvnna")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0

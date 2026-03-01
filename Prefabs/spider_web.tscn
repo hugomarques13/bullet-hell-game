@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c6thhq4im68q"]
+
+[ext_resource type="Script" uid="uid://g8x2jpayu8v6" path="res://Scripts/spider_web.gd" id="1_2mly5"]
+[ext_resource type="Texture2D" uid="uid://g4q45peweag4" path="res://Sprites/Projectiles/floor1.png" id="1_m7hex"]
+[ext_resource type="Texture2D" uid="uid://xstypetfb1gf" path="res://Sprites/Projectiles/floor3.png" id="2_2mly5"]
+[ext_resource type="Texture2D" uid="uid://cfr6jjle613tl" path="res://Sprites/Projectiles/floor4.png" id="3_5y4su"]
+[ext_resource type="Texture2D" uid="uid://dkio1bwrscrvh" path="res://Sprites/Projectiles/floor5.png" id="4_untct"]
+[ext_resource type="Texture2D" uid="uid://umpncjh1p58l" path="res://Sprites/Projectiles/floor6.png" id="5_aggw4"]
+[ext_resource type="Texture2D" uid="uid://cv5tmqobn3obb" path="res://Sprites/Projectiles/floor7.png" id="6_bs0ru"]
+
+[sub_resource type="Shader" id="Shader_1opfx"]
+code = "shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xs2so"]
+shader = SubResource("Shader_1opfx")
+shader_parameter/invert_colors = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jgsvf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_m7hex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2mly5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5y4su")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_untct")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_aggw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bs0ru")
+}],
+"loop": false,
+"name": &"landed",
+"speed": 5.0
+}]
+
+[node name="SpiderWeb" type="Area2D" unique_id=284602960]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_2mly5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=983503383]
+material = SubResource("ShaderMaterial_xs2so")
+sprite_frames = SubResource("SpriteFrames_jgsvf")
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1967182785]
+visible = false
+polygon = PackedVector2Array(-23, 86, -27, 80, -38, 80, -71, 9, -72, -5, -78, -8, -37, -82, -29, -84, -9, -82, 14, -67, 33, -66, 53, -47, 74, -39, 80, -40, 75, -31, 75, 0, 66, 12, 70, 53, 66, 63, 56, 65, 11, 73)
+disabled = true

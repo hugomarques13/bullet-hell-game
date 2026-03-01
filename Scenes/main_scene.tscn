@@ -1,49 +1,802 @@
 [gd_scene format=3 uid="uid://hp2b6531m2kq"]
 
 [ext_resource type="PackedScene" uid="uid://br5nqsmxho0b6" path="res://Prefabs/player.tscn" id="1_6l7je"]
-[ext_resource type="Texture2D" uid="uid://dnri1tjd5r5p0" path="res://Sprites/Enemy/bbb.png" id="2_jv6wh"]
+[ext_resource type="Material" uid="uid://b603t8c76bik3" path="res://Scripts/enemy_shader_material.tres" id="2_76v2p"]
+[ext_resource type="Texture2D" uid="uid://cssrlktuvpaod" path="res://Sprites/Backgrounds/mapa1.png" id="2_y0lwx"]
+[ext_resource type="Shader" uid="uid://dul3rohiqlkub" path="res://Scripts/player.gdshader" id="3_igw8g"]
+[ext_resource type="Texture2D" uid="uid://8nwlyhxerywr" path="res://Sprites/Backgrounds/mapa2.png" id="4_igw8g"]
+[ext_resource type="Texture2D" uid="uid://cbwuuboethyo5" path="res://Sprites/Enemy/a1.png" id="4_ioaeq"]
+[ext_resource type="Texture2D" uid="uid://bl4wk3rd075la" path="res://Sprites/Enemy/b1.png" id="5_7ewk0"]
+[ext_resource type="Texture2D" uid="uid://cjqhxxmdiayg4" path="res://Sprites/Enemy/bruno_sem_boca.png" id="5_lhp3t"]
+[ext_resource type="Texture2D" uid="uid://2my08rrw1j7h" path="res://Sprites/Backgrounds/mapa3.png" id="5_rlvbq"]
+[ext_resource type="Texture2D" uid="uid://lm5oshwt04af" path="res://Sprites/Enemy/b2.png" id="6_lhp3t"]
+[ext_resource type="Texture2D" uid="uid://bqymevybregk7" path="res://Sprites/Enemy/b3.png" id="7_gnsmo"]
+[ext_resource type="Texture2D" uid="uid://dhh0mjo5vxlnm" path="res://Sprites/Enemy/b4.png" id="8_psl12"]
+[ext_resource type="Texture2D" uid="uid://btq4u2x7oic0a" path="res://Sprites/Enemy/a2.png" id="9_2ebs2"]
+[ext_resource type="Texture2D" uid="uid://dcgfniwmwiyyl" path="res://Sprites/Enemy/a3.png" id="10_oyb3p"]
+[ext_resource type="Texture2D" uid="uid://d04g4xurhr0k" path="res://Sprites/Enemy/a4.png" id="11_jvnna"]
+[ext_resource type="Script" uid="uid://ckhfl1cd0rhpu" path="res://Scripts/enemy_character.gd" id="12_ioaeq"]
+[ext_resource type="Texture2D" uid="uid://cqav4jiy3f7js" path="res://Sprites/Enemy/buna_do_broca.png" id="14_gnsmo"]
+[ext_resource type="Texture2D" uid="uid://dlwdo86vg68o3" path="res://Sprites/Enemy/boca_do_bruno.png" id="15_psl12"]
+[ext_resource type="Script" uid="uid://0ito1y58i6f5" path="res://Scripts/hud.gd" id="16_2ebs2"]
+[ext_resource type="Texture2D" uid="uid://dymjlokre3h0k" path="res://Sprites/HUD/hud.png" id="16_psl12"]
+[ext_resource type="Texture2D" uid="uid://b5gytxdndkj8d" path="res://Sprites/Player/change1.png" id="16_s8qe6"]
+[ext_resource type="Texture2D" uid="uid://dxulm83v0hbfw" path="res://Sprites/HUD/hudnode1.png" id="17_2ebs2"]
+[ext_resource type="Texture2D" uid="uid://djeat0ktg8tq2" path="res://Sprites/Player/change2.png" id="17_yb0ja"]
+[ext_resource type="Texture2D" uid="uid://clasek5o48rqn" path="res://Sprites/Player/change3.png" id="18_15kh8"]
+[ext_resource type="Texture2D" uid="uid://dnuse4qfl5io8" path="res://Sprites/HUD/barraboss.png" id="19_jvnna"]
+[ext_resource type="Texture2D" uid="uid://co8dca758xd0r" path="res://Sprites/Player/change4.png" id="19_viu5a"]
+[ext_resource type="Texture2D" uid="uid://dwttwyx2xf7xu" path="res://Sprites/Player/changee1.png" id="20_b00ha"]
+[ext_resource type="Texture2D" uid="uid://bs5afkcdkopxh" path="res://Sprites/HUD/barraboss2.png" id="20_b48ew"]
+[ext_resource type="PackedScene" uid="uid://cmof4063tfcov" path="res://Prefabs/pauseMenu.tscn" id="21_b48ew"]
+[ext_resource type="Texture2D" uid="uid://c0wqcelatuhm5" path="res://Sprites/Player/changee2.png" id="21_urcnp"]
+[ext_resource type="Texture2D" uid="uid://ckji1dar5fxmu" path="res://Sprites/Player/changee3.png" id="22_rpyod"]
+[ext_resource type="Texture2D" uid="uid://c1te3fpvyjanp" path="res://Sprites/Player/changee4.png" id="23_mplvr"]
+[ext_resource type="AudioStream" uid="uid://dqtkpsjerybhc" path="res://Sounds/Spider aggro.wav" id="27_8qtx6"]
+[ext_resource type="Material" uid="uid://bljh17nylf1dc" path="res://Scripts/initial_baby.tres" id="29_m0uwk"]
+[ext_resource type="Script" uid="uid://cty1hpwo142o3" path="res://Scripts/intro_baby_spider.gd" id="29_mffef"]
+[ext_resource type="Texture2D" uid="uid://dxrae86h0n2b4" path="res://Sprites/Baby Spiders/fabricio_corpo.png" id="30_mffef"]
+[ext_resource type="Texture2D" uid="uid://cmderv7p3splk" path="res://Sprites/Baby Spiders/fab1.png" id="31_2h5y0"]
+[ext_resource type="Texture2D" uid="uid://c0140tfyn3p4g" path="res://Sprites/Baby Spiders/fab2.png" id="32_y0lwx"]
+[ext_resource type="Texture2D" uid="uid://b1688kexjf6hr" path="res://Sprites/Baby Spiders/fab3.png" id="33_igw8g"]
+[ext_resource type="Texture2D" uid="uid://cqppyt4khwu7" path="res://Sprites/Baby Spiders/fab4.png" id="34_rlvbq"]
+[ext_resource type="Texture2D" uid="uid://crjv4jutv3au1" path="res://Sprites/Baby Spiders/fab5.png" id="35_2v2b7"]
+[ext_resource type="Texture2D" uid="uid://dx4jwv5uirmx7" path="res://Sprites/Baby Spiders/fab6.png" id="36_p35vf"]
+[ext_resource type="Texture2D" uid="uid://cc81qefgws8m" path="res://Sprites/Baby Spiders/fab7.png" id="37_stxua"]
+[ext_resource type="Texture2D" uid="uid://1r4dhscma083" path="res://Sprites/Baby Spiders/fab8.png" id="38_37jd4"]
+[ext_resource type="Texture2D" uid="uid://crdgf1cbl2ysf" path="res://Sprites/Baby Spiders/fabricio_boca.png" id="39_gfj8f"]
+[ext_resource type="Texture2D" uid="uid://c7xorc4y1ve6g" path="res://Sprites/Baby Spiders/fabricio_boca2.png" id="40_so8ax"]
+[ext_resource type="AudioStream" uid="uid://colfe3xay0nkc" path="res://Sounds/boss1.mp3" id="45_rlvbq"]
+[ext_resource type="Texture2D" uid="uid://b5sqpi47ii7n7" path="res://Sprites/HUD/m1.png" id="45_wrtin"]
+[ext_resource type="Texture2D" uid="uid://f2egyitb7dae" path="res://Sprites/HUD/m2.png" id="46_tar5f"]
+[ext_resource type="Texture2D" uid="uid://btmbi0ri172fd" path="res://Sprites/HUD/space.png" id="47_vtohw"]
+[ext_resource type="Script" uid="uid://dgog00x8pjqwv" path="res://Scripts/dead_spider.gd" id="47_yu1ej"]
+[ext_resource type="Texture2D" uid="uid://ci0ton38mq767" path="res://Sprites/Split Boss/corpo1.png" id="48_5w0f0"]
+[ext_resource type="Texture2D" uid="uid://sbofrkcy3x28" path="res://Sprites/Split Boss/corpo2.png" id="49_v1fg3"]
+[ext_resource type="Texture2D" uid="uid://7ufq17qxesbg" path="res://Sprites/Split Boss/corpo3.png" id="50_wrtin"]
+[ext_resource type="Texture2D" uid="uid://b3lclvspbluim" path="res://Sprites/Split Boss/corpo4.png" id="51_tar5f"]
+[ext_resource type="Texture2D" uid="uid://b7vjf7wskbw80" path="res://Sprites/Split Boss/corpo5.png" id="52_vtohw"]
+[ext_resource type="Texture2D" uid="uid://c1ewul0dlyckd" path="res://Sprites/EAT/txt1.png" id="56_n1krg"]
+[ext_resource type="Texture2D" uid="uid://bbxy4caojai3e" path="res://Sprites/EAT/txt2.png" id="57_8qtx6"]
+[ext_resource type="Texture2D" uid="uid://yseag4vl6lka" path="res://Sprites/EAT/txt3.png" id="58_0c7y5"]
+[ext_resource type="Texture2D" uid="uid://cc2grtcesrh55" path="res://Sprites/EAT/txt4.png" id="59_4d4va"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
-size = Vector2(1153, 1298)
+size = Vector2(1152, 1296)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jv6wh"]
-size = Vector2(9, 1300)
+size = Vector2(8.75, 1300)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6ack"]
-size = Vector2(9, 1173)
+size = Vector2(8.5, 1173)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rlvbq"]
+shader = ExtResource("3_igw8g")
+shader_parameter/invert_colors = false
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_psl12"]
+radius = 28.0
+height = 138.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vggli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_s8qe6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_yb0ja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_15kh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_viu5a")
+}],
+"loop": false,
+"name": &"Base",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_b00ha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_urcnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rpyod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_mplvr")
+}],
+"loop": false,
+"name": &"Inverted",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ewk0"]
+radius = 9.0
+height = 44.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ok4c"]
+radius = 31.415749
+height = 64.38237
+
+[sub_resource type="Shader" id="Shader_tscpr"]
+code = " shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0c7y5"]
+shader = SubResource("Shader_tscpr")
+shader_parameter/invert_colors = false
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qtx6"]
+radius = 30.874527
+height = 88.60884
+
+[sub_resource type="Shader" id="Shader_0c7y5"]
+code = " shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4d4va"]
+shader = SubResource("Shader_0c7y5")
+shader_parameter/invert_colors = false
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vdma7"]
+radius = 12.634674
+height = 60.700745
+
+[sub_resource type="Shader" id="Shader_d63xc"]
+code = " shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vdma7"]
+shader = SubResource("Shader_d63xc")
+shader_parameter/invert_colors = false
+
+[sub_resource type="Shader" id="Shader_x4ev2"]
+code = " shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d63xc"]
+shader = SubResource("Shader_x4ev2")
+shader_parameter/invert_colors = false
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7d3c8"]
+radius = 12.634674
+height = 63.65149
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppfgf"]
+shader = ExtResource("3_igw8g")
+shader_parameter/invert_colors = true
 
 [node name="MainScene" type="Node2D" unique_id=1578074869]
 
 [node name="Player" parent="." unique_id=233873264 instance=ExtResource("1_6l7je")]
 position = Vector2(576, 324)
 
-[node name="Bbb" type="Sprite2D" parent="." unique_id=881455921]
-position = Vector2(576, 1)
-texture = ExtResource("2_jv6wh")
-
 [node name="CameraBounds" type="Area2D" parent="." unique_id=1007109586]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=1431407369]
-position = Vector2(575.5, -1)
+visible = false
+position = Vector2(576, 0)
 shape = SubResource("RectangleShape2D_6l7je")
 debug_color = Color(0.77254903, 0.44313726, 0.12156863, 0.41960785)
 
 [node name="Collisions" type="StaticBody2D" parent="." unique_id=1751032166]
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" unique_id=871227670]
-position = Vector2(-5.5, -1)
+position = Vector2(-4, -1)
 shape = SubResource("RectangleShape2D_jv6wh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions" unique_id=1748542900]
-position = Vector2(1156, -1)
+position = Vector2(1156.25, -1)
 shape = SubResource("RectangleShape2D_jv6wh")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions" unique_id=1563242226]
-position = Vector2(576.5, 652)
+position = Vector2(576.5, 652.25)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_x6ack")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions" unique_id=2012364356]
-position = Vector2(574, -655)
+position = Vector2(574, -652)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_x6ack")
+
+[node name="Background" type="Node2D" parent="." unique_id=671452000]
+z_index = -5
+
+[node name="FundoWip" type="Sprite2D" parent="Background" unique_id=2143615996]
+z_index = -10
+position = Vector2(576, 0)
+texture = ExtResource("2_y0lwx")
+
+[node name="ToInvert" type="Sprite2D" parent="Background" unique_id=1778441650]
+z_index = -10
+material = SubResource("ShaderMaterial_rlvbq")
+position = Vector2(576, 0)
+texture = ExtResource("4_igw8g")
+
+[node name="FundoWip3" type="Sprite2D" parent="Background" unique_id=1720499924]
+z_index = -10
+position = Vector2(576, 0)
+texture = ExtResource("5_rlvbq")
+
+[node name="Spider" type="CharacterBody2D" parent="." unique_id=640562580]
+z_index = 6
+position = Vector2(574.0009, -742.88794)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("12_ioaeq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spider" unique_id=1962344472]
+visible = false
+z_index = 10
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_psl12")
+
+[node name="Body" type="Sprite2D" parent="Spider" unique_id=1802428478]
+z_index = 1
+material = ExtResource("2_76v2p")
+texture = ExtResource("5_lhp3t")
+
+[node name="A1" type="Sprite2D" parent="Spider" unique_id=2061444504]
+material = ExtResource("2_76v2p")
+texture = ExtResource("4_ioaeq")
+
+[node name="B1" type="Sprite2D" parent="Spider" unique_id=96256061]
+material = ExtResource("2_76v2p")
+texture = ExtResource("5_7ewk0")
+
+[node name="B2" type="Sprite2D" parent="Spider" unique_id=1626352588]
+material = ExtResource("2_76v2p")
+texture = ExtResource("6_lhp3t")
+
+[node name="B3" type="Sprite2D" parent="Spider" unique_id=161019553]
+material = ExtResource("2_76v2p")
+texture = ExtResource("7_gnsmo")
+
+[node name="B4" type="Sprite2D" parent="Spider" unique_id=539380739]
+material = ExtResource("2_76v2p")
+texture = ExtResource("8_psl12")
+
+[node name="A2" type="Sprite2D" parent="Spider" unique_id=251184694]
+material = ExtResource("2_76v2p")
+texture = ExtResource("9_2ebs2")
+
+[node name="A3" type="Sprite2D" parent="Spider" unique_id=1645235339]
+material = ExtResource("2_76v2p")
+texture = ExtResource("10_oyb3p")
+
+[node name="A4" type="Sprite2D" parent="Spider" unique_id=1073514750]
+material = ExtResource("2_76v2p")
+texture = ExtResource("11_jvnna")
+
+[node name="M1" type="Sprite2D" parent="Spider" unique_id=1541370894]
+material = ExtResource("2_76v2p")
+texture = ExtResource("14_gnsmo")
+
+[node name="M2" type="Sprite2D" parent="Spider" unique_id=400215018]
+material = ExtResource("2_76v2p")
+texture = ExtResource("15_psl12")
+
+[node name="HeadProjectileMarker" type="Marker2D" parent="Spider" unique_id=2130864782]
+position = Vector2(0, 57)
+
+[node name="HeadBallMarker" type="Marker2D" parent="Spider" unique_id=321265035]
+position = Vector2(0, 65)
+
+[node name="Particles" type="AnimatedSprite2D" parent="Spider" unique_id=1911797772]
+visible = false
+z_index = 8
+position = Vector2(0, -7)
+scale = Vector2(1.58, 1.58)
+sprite_frames = SubResource("SpriteFrames_vggli")
+animation = &"Base"
+frame = 3
+frame_progress = 1.0
+
+[node name="SpiderAggro" type="AudioStreamPlayer2D" parent="Spider" unique_id=623165062]
+stream = ExtResource("27_8qtx6")
+
+[node name="BabySpider" type="CharacterBody2D" parent="." unique_id=1927734952]
+position = Vector2(579.0948, -0.14326477)
+collision_layer = 3
+script = ExtResource("29_mffef")
+
+[node name="Body" type="Sprite2D" parent="BabySpider" unique_id=1738064669]
+z_index = 1
+material = ExtResource("29_m0uwk")
+texture = ExtResource("30_mffef")
+
+[node name="A1" type="Sprite2D" parent="BabySpider" unique_id=425640709]
+material = ExtResource("29_m0uwk")
+texture = ExtResource("31_2h5y0")
+
+[node name="A2" type="Sprite2D" parent="BabySpider" unique_id=1480122207]
+material = ExtResource("29_m0uwk")
+texture = ExtResource("32_y0lwx")
+
+[node name="A3" type="Sprite2D" parent="BabySpider" unique_id=796928609]
+material = ExtResource("29_m0uwk")
+texture = ExtResource("33_igw8g")
+
+[node name="A4" type="Sprite2D" parent="BabySpider" unique_id=955178822]
+material = ExtResource("29_m0uwk")
+texture = ExtResource("34_rlvbq")
+
+[node name="B1" type="Sprite2D" parent="BabySpider" unique_id=453432741]
+material = ExtResource("29_m0uwk")
+texture = ExtResource("35_2v2b7")
+
+[node name="B2" type="Sprite2D" parent="BabySpider" unique_id=1914468986]
+material = ExtResource("29_m0uwk")
+texture = ExtResource("36_p35vf")
+
+[node name="B3" type="Sprite2D" parent="BabySpider" unique_id=172699658]
+material = ExtResource("29_m0uwk")
+texture = ExtResource("37_stxua")
+
+[node name="B4" type="Sprite2D" parent="BabySpider" unique_id=1511810863]
+material = ExtResource("29_m0uwk")
+texture = ExtResource("38_37jd4")
+
+[node name="M1" type="Sprite2D" parent="BabySpider" unique_id=178216888]
+material = ExtResource("29_m0uwk")
+texture = ExtResource("39_gfj8f")
+
+[node name="M2" type="Sprite2D" parent="BabySpider" unique_id=341715545]
+material = ExtResource("29_m0uwk")
+texture = ExtResource("40_so8ax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BabySpider" unique_id=616748816]
+visible = false
+position = Vector2(1, -2)
+shape = SubResource("CapsuleShape2D_7ewk0")
+
+[node name="HeadProjectileMarker" type="Marker2D" parent="BabySpider" unique_id=14735069]
+position = Vector2(1, 19)
+
+[node name="HeadBallMarker" type="Marker2D" parent="BabySpider" unique_id=49258882]
+position = Vector2(1, 23)
+
+[node name="ArenaMarkers" type="Node2D" parent="." unique_id=1665046257]
+
+[node name="Top" type="Marker2D" parent="ArenaMarkers" unique_id=1840107727]
+position = Vector2(574, -652)
+
+[node name="Right" type="Marker2D" parent="ArenaMarkers" unique_id=1053546866]
+position = Vector2(1156, 0)
+
+[node name="Left" type="Marker2D" parent="ArenaMarkers" unique_id=1609571635]
+
+[node name="Bottom" type="Marker2D" parent="ArenaMarkers" unique_id=1413157689]
+position = Vector2(574, 652)
+
+[node name="EggSpawns" type="Node2D" parent="ArenaMarkers" unique_id=1423650687]
+
+[node name="1" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=2074097209]
+position = Vector2(147, -111)
+
+[node name="2" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1870348969]
+position = Vector2(213, -468)
+
+[node name="3" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=810527674]
+position = Vector2(515, -266)
+
+[node name="4" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1822235725]
+position = Vector2(753, -471)
+
+[node name="5" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=416627923]
+position = Vector2(1008, -169)
+
+[node name="6" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1606404459]
+position = Vector2(1002, 125)
+
+[node name="7" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=526959585]
+position = Vector2(823, 420)
+
+[node name="8" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1380913285]
+position = Vector2(592, 186)
+
+[node name="9" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=812255087]
+position = Vector2(431, 439)
+
+[node name="10" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=465676095]
+position = Vector2(161, 150)
+
+[node name="11" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1988390579]
+position = Vector2(117, 534)
+
+[node name="12" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=277464112]
+position = Vector2(1062, 565)
+
+[node name="13" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1660647438]
+position = Vector2(1048, -553)
+
+[node name="14" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=260734909]
+position = Vector2(75, -326)
+
+[node name="WebSpawns" type="Node2D" parent="ArenaMarkers" unique_id=2083111482]
+
+[node name="1" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=480679636]
+position = Vector2(202, 0)
+
+[node name="2" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=1117152311]
+position = Vector2(267, 189)
+
+[node name="3" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=1440713930]
+position = Vector2(450, 323)
+
+[node name="4" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=1582422909]
+position = Vector2(735, 338)
+
+[node name="5" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=393022683]
+position = Vector2(966, 199)
+
+[node name="6" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=509985518]
+position = Vector2(1001, -2)
+
+[node name="7" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=1116315710]
+position = Vector2(957, -158)
+
+[node name="8" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=500321854]
+position = Vector2(742, -265)
+
+[node name="9" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=77600085]
+position = Vector2(506, -279)
+
+[node name="10" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=612986339]
+position = Vector2(305, -220)
+
+[node name="SpiralSpots" type="Node2D" parent="ArenaMarkers" unique_id=1428759988]
+
+[node name="1" type="Marker2D" parent="ArenaMarkers/SpiralSpots" unique_id=224992969]
+position = Vector2(59, 587)
+
+[node name="2" type="Marker2D" parent="ArenaMarkers/SpiralSpots" unique_id=663727240]
+position = Vector2(1067, 587)
+
+[node name="3" type="Marker2D" parent="ArenaMarkers/SpiralSpots" unique_id=284661469]
+position = Vector2(56, -581)
+
+[node name="4" type="Marker2D" parent="ArenaMarkers/SpiralSpots" unique_id=677152934]
+position = Vector2(1064, -581)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1279359957]
+script = ExtResource("16_2ebs2")
+
+[node name="Hud" type="TextureRect" parent="HUD" unique_id=199811596]
+z_index = 100
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 250.0
+offset_bottom = 96.0
+texture = ExtResource("16_psl12")
+
+[node name="Hudnode1" type="TextureRect" parent="HUD" unique_id=396970032]
+z_index = 101
+offset_left = 63.0
+offset_top = 52.0
+offset_right = 91.0
+offset_bottom = 80.0
+texture = ExtResource("17_2ebs2")
+
+[node name="Hudnode2" type="TextureRect" parent="HUD" unique_id=1551539980]
+z_index = 101
+offset_left = 101.0
+offset_top = 52.0
+offset_right = 129.0
+offset_bottom = 80.0
+texture = ExtResource("17_2ebs2")
+
+[node name="Hudnode3" type="TextureRect" parent="HUD" unique_id=819899933]
+z_index = 101
+offset_left = 139.0
+offset_top = 52.0
+offset_right = 167.0
+offset_bottom = 80.0
+texture = ExtResource("17_2ebs2")
+
+[node name="Hudnode4" type="TextureRect" parent="HUD" unique_id=401492147]
+z_index = 101
+offset_left = 177.0
+offset_top = 52.0
+offset_right = 205.0
+offset_bottom = 80.0
+texture = ExtResource("17_2ebs2")
+
+[node name="BossBar" type="TextureRect" parent="HUD" unique_id=1484927151]
+visible = false
+offset_left = 252.0
+offset_top = 601.0
+offset_right = 1226.0
+offset_bottom = 641.0
+scale = Vector2(0.635, 1)
+texture = ExtResource("19_jvnna")
+
+[node name="RealBar" type="TextureRect" parent="HUD" unique_id=1942450010]
+visible = false
+material = ExtResource("2_76v2p")
+offset_left = 258.14658
+offset_top = 608.1046
+offset_right = 1213.3079
+offset_bottom = 634.1061
+scale = Vector2(0.635, 1)
+texture = ExtResource("20_b48ew")
+
+[node name="OldBar" type="ColorRect" parent="HUD" unique_id=689496084]
+visible = false
+offset_left = 258.0
+offset_top = 607.8506
+offset_right = 864.76514
+offset_bottom = 634.0
+color = Color(0.7254902, 0, 0, 1)
+
+[node name="LeftClick" type="TextureRect" parent="HUD" unique_id=1833298219]
+visible = false
+offset_left = 375.31763
+offset_top = 79.08131
+offset_right = 470.31766
+offset_bottom = 174.0813
+texture = ExtResource("45_wrtin")
+
+[node name="RightClick" type="TextureRect" parent="HUD" unique_id=1724343814]
+visible = false
+offset_left = 684.1423
+offset_top = 78.18765
+offset_right = 779.1423
+offset_bottom = 173.18767
+texture = ExtResource("46_tar5f")
+
+[node name="SpaceBar" type="TextureRect" parent="HUD" unique_id=1892933207]
+visible = false
+offset_left = 494.5017
+offset_top = 387.9516
+offset_right = 659.5017
+offset_bottom = 446.9516
+texture = ExtResource("47_vtohw")
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1131360432]
+
+[node name="PauseMenu" parent="PauseLayer" unique_id=439062782 instance=ExtResource("21_b48ew")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1160638606]
+stream = ExtResource("45_rlvbq")
+volume_db = -25.0
+autoplay = true
+
+[node name="AudioStreamPlayerB" type="AudioStreamPlayer" parent="." unique_id=1799014102]
+volume_db = -25.0
+
+[node name="DeadSpiderParts" type="Node2D" parent="." unique_id=666380468]
+visible = false
+
+[node name="DeadSpider" type="Area2D" parent="DeadSpiderParts" unique_id=1079339724]
+z_index = 1
+position = Vector2(590.12036, 56.485565)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("47_yu1ej")
+metadata/IsTongueable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadSpiderParts/DeadSpider" unique_id=989829288]
+z_index = 5
+position = Vector2(-4.4964905, -12.590111)
+shape = SubResource("CapsuleShape2D_3ok4c")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="DeadSpiderParts/DeadSpider" unique_id=232941562]
+material = SubResource("ShaderMaterial_0c7y5")
+rotation = 0.39739782
+texture = ExtResource("48_5w0f0")
+
+[node name="DeadSpider2" type="Area2D" parent="DeadSpiderParts" unique_id=713984489]
+z_index = 1
+position = Vector2(585.9246, -44.280457)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("47_yu1ej")
+metadata/IsTongueable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadSpiderParts/DeadSpider2" unique_id=1285233196]
+z_index = 5
+position = Vector2(0.7701416, -3.900177)
+rotation = -0.4133694
+shape = SubResource("CapsuleShape2D_8qtx6")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="DeadSpiderParts/DeadSpider2" unique_id=1862323214]
+material = SubResource("ShaderMaterial_4d4va")
+rotation = -0.43084288
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("49_v1fg3")
+
+[node name="DeadSpider3" type="Area2D" parent="DeadSpiderParts" unique_id=407441473]
+z_index = 1
+position = Vector2(507.65933, -42.42984)
+rotation = -0.50658226
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("47_yu1ej")
+metadata/IsTongueable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadSpiderParts/DeadSpider3" unique_id=391403850]
+z_index = 5
+position = Vector2(2.2565918, -1.6705246)
+rotation = -0.9139164
+shape = SubResource("CapsuleShape2D_vdma7")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="DeadSpiderParts/DeadSpider3" unique_id=551041316]
+material = SubResource("ShaderMaterial_vdma7")
+position = Vector2(-2.8295593, -9.443581)
+rotation = -0.19890064
+texture = ExtResource("50_wrtin")
+
+[node name="DeadSpider4" type="Area2D" parent="DeadSpiderParts" unique_id=1239976205]
+z_index = 1
+position = Vector2(652.7546, -28.651619)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("47_yu1ej")
+metadata/IsTongueable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadSpiderParts/DeadSpider4" unique_id=2549288]
+z_index = 5
+position = Vector2(2.2565918, -1.6705246)
+rotation = -0.9139164
+shape = SubResource("CapsuleShape2D_vdma7")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="DeadSpiderParts/DeadSpider4" unique_id=159294374]
+material = SubResource("ShaderMaterial_d63xc")
+rotation = 0.68626904
+texture = ExtResource("51_tar5f")
+
+[node name="DeadSpider5" type="Area2D" parent="DeadSpiderParts" unique_id=1687514604]
+z_index = 1
+position = Vector2(521.8146, 5.340561)
+rotation = -0.3190379
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("47_yu1ej")
+metadata/IsTongueable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadSpiderParts/DeadSpider5" unique_id=898100077]
+z_index = 5
+position = Vector2(2.2565918, -1.6705246)
+rotation = -1.8077443
+shape = SubResource("CapsuleShape2D_7d3c8")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="DeadSpiderParts/DeadSpider5" unique_id=1238276151]
+material = SubResource("ShaderMaterial_ppfgf")
+position = Vector2(-3.7161255, 0.89186096)
+rotation = -0.20417255
+texture = ExtResource("52_vtohw")
+
+[node name="EatVisuals" type="Node2D" parent="." unique_id=1890373201]
+
+[node name="Tutorial" type="Node2D" parent="EatVisuals" unique_id=1467190718]
+visible = false
+
+[node name="Txt1" type="Sprite2D" parent="EatVisuals/Tutorial" unique_id=27987985]
+position = Vector2(479.61536, -76.85544)
+rotation = -0.16897672
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("56_n1krg")
+
+[node name="Txt2" type="Sprite2D" parent="EatVisuals/Tutorial" unique_id=1776016166]
+position = Vector2(719.5168, -69.51727)
+rotation = 0.13844736
+texture = ExtResource("57_8qtx6")
+
+[node name="Txt3" type="Sprite2D" parent="EatVisuals/Tutorial" unique_id=2140925573]
+position = Vector2(463.81006, 59.1828)
+rotation = -0.2104178
+texture = ExtResource("58_0c7y5")
+
+[node name="Txt4" type="Sprite2D" parent="EatVisuals/Tutorial" unique_id=1487567325]
+position = Vector2(689.0352, 64.827484)
+rotation = 0.041337974
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("59_4d4va")
+
+[node name="Ending" type="Node2D" parent="EatVisuals" unique_id=329305821]
+visible = false
+
+[node name="Txt1" type="Sprite2D" parent="EatVisuals/Ending" unique_id=598710856]
+position = Vector2(695.2759, -94.45642)
+rotation = -0.12651673
+scale = Vector2(1.305, 1.305)
+texture = ExtResource("56_n1krg")
+
+[node name="Txt5" type="Sprite2D" parent="EatVisuals/Ending" unique_id=1672994004]
+position = Vector2(621.2759, -248.45642)
+rotation = 0.29094738
+scale = Vector2(1.305, 1.305)
+texture = ExtResource("56_n1krg")
+
+[node name="Txt2" type="Sprite2D" parent="EatVisuals/Ending" unique_id=555147605]
+position = Vector2(462.36835, -130.51953)
+rotation = 0.12413841
+scale = Vector2(1.33, 1.33)
+texture = ExtResource("57_8qtx6")
+
+[node name="Txt6" type="Sprite2D" parent="EatVisuals/Ending" unique_id=820367390]
+position = Vector2(874.36835, 234.48047)
+rotation = -0.29645395
+scale = Vector2(1.3299999, 1.3299999)
+texture = ExtResource("57_8qtx6")
+
+[node name="Txt3" type="Sprite2D" parent="EatVisuals/Ending" unique_id=1358119661]
+position = Vector2(445.08804, 91.86963)
+rotation = -0.09959706
+scale = Vector2(1.19, 1.19)
+texture = ExtResource("58_0c7y5")
+
+[node name="Txt7" type="Sprite2D" parent="EatVisuals/Ending" unique_id=368931023]
+position = Vector2(328.08804, -313.13034)
+rotation = 0.1937653
+scale = Vector2(1.19, 1.19)
+texture = ExtResource("58_0c7y5")
+
+[node name="Txt4" type="Sprite2D" parent="EatVisuals/Ending" unique_id=1170977921]
+position = Vector2(807.9731, 79.848625)
+rotation = -0.14097778
+scale = Vector2(2.165, 2.165)
+texture = ExtResource("59_4d4va")
+
+[node name="Txt8" type="Sprite2D" parent="EatVisuals/Ending" unique_id=1681125633]
+position = Vector2(303.97308, 199.84863)
+rotation = 0.1891578
+scale = Vector2(1.99, 1.99)
+texture = ExtResource("59_4d4va")

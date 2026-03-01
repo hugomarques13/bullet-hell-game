@@ -1,13 +1,35 @@
 [gd_scene format=3 uid="uid://br5nqsmxho0b6"]
 
+[ext_resource type="Shader" uid="uid://dul3rohiqlkub" path="res://Scripts/player.gdshader" id="1_08u7w"]
 [ext_resource type="Script" uid="uid://cbdxxqwnlbi34" path="res://Scripts/character_body_2d.gd" id="1_juxdh"]
 [ext_resource type="Texture2D" uid="uid://b60xmycg23tfo" path="res://Sprites/Player/homem_cabela.png" id="2_4qbli"]
 [ext_resource type="Texture2D" uid="uid://bfdj1i1e1eefp" path="res://Sprites/Player/homem_corpo.png" id="3_08u7w"]
+[ext_resource type="AudioStream" uid="uid://bqxn0nlvdmctg" path="res://Sounds/change1.mp3" id="3_405c5"]
+[ext_resource type="Material" uid="uid://d3qn5rxgb1d8t" path="res://Scripts/player_shader_material.tres" id="3_kgmex"]
+[ext_resource type="AudioStream" uid="uid://bdmnve3wxy27h" path="res://Sounds/change2.mp3" id="4_i3mxk"]
 [ext_resource type="Texture2D" uid="uid://y6i2kbik0ovh" path="res://Sprites/Player/homemb1.png" id="4_kgmex"]
+[ext_resource type="AudioStream" uid="uid://tgsj3yfo5r5k" path="res://Sounds/spit.mp3" id="4_qjulh"]
 [ext_resource type="Texture2D" uid="uid://de31hxu35raxs" path="res://Sprites/Player/homemb2.png" id="5_2xbkd"]
+[ext_resource type="AudioStream" uid="uid://ddtild053gaoj" path="res://Sounds/tongue1.mp3" id="5_6gc6r"]
 [ext_resource type="Texture2D" uid="uid://di6qs40lh20n7" path="res://Sprites/Player/homemb3.png" id="6_3vpsw"]
+[ext_resource type="AudioStream" uid="uid://bamrb8fb5ru7a" path="res://Sounds/take damage.wav" id="6_7c0pg"]
+[ext_resource type="AudioStream" uid="uid://cv3k2ukp054u" path="res://Sounds/tongue2.mp3" id="6_vjsh3"]
 [ext_resource type="Texture2D" uid="uid://bedf5odawqllj" path="res://Sprites/Player/homemb4.png" id="7_m62uw"]
-[ext_resource type="Script" uid="uid://c43sfu6t7sb5e" path="res://Prefabs/camera_2d.gd" id="8_4qbli"]
+[ext_resource type="Script" uid="uid://c43sfu6t7sb5e" path="res://Scripts/camera_2d.gd" id="8_4qbli"]
+[ext_resource type="Texture2D" uid="uid://b5gytxdndkj8d" path="res://Sprites/Player/change1.png" id="11_wphcr"]
+[ext_resource type="Texture2D" uid="uid://djeat0ktg8tq2" path="res://Sprites/Player/change2.png" id="12_and0b"]
+[ext_resource type="Texture2D" uid="uid://clasek5o48rqn" path="res://Sprites/Player/change3.png" id="13_405c5"]
+[ext_resource type="Texture2D" uid="uid://co8dca758xd0r" path="res://Sprites/Player/change4.png" id="14_i3mxk"]
+[ext_resource type="Texture2D" uid="uid://dwttwyx2xf7xu" path="res://Sprites/Player/changee1.png" id="15_qvmbc"]
+[ext_resource type="Texture2D" uid="uid://c0wqcelatuhm5" path="res://Sprites/Player/changee2.png" id="16_qjulh"]
+[ext_resource type="Texture2D" uid="uid://ckji1dar5fxmu" path="res://Sprites/Player/changee3.png" id="17_evqxc"]
+[ext_resource type="Texture2D" uid="uid://c1te3fpvyjanp" path="res://Sprites/Player/changee4.png" id="18_6gc6r"]
+[ext_resource type="Texture2D" uid="uid://trhl763eryrq" path="res://Sprites/Player/linguaA1.png" id="21_qvmbc"]
+[ext_resource type="Texture2D" uid="uid://bqu408r4boslm" path="res://Sprites/Player/linguaA2.png" id="22_qjulh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgmex"]
+shader = ExtResource("1_08u7w")
+shader_parameter/invert_colors = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x6ack"]
 animations = [{
@@ -20,17 +42,111 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qvmbc"]
+radius = 4.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6l7je"]
 height = 38.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vjsh3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wphcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_and0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_405c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_i3mxk")
+}],
+"loop": false,
+"name": &"Base",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_qvmbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qjulh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_evqxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6gc6r")
+}],
+"loop": false,
+"name": &"Inverted",
+"speed": 10.0
+}]
+
 [node name="Player" type="Node2D" unique_id=233873264]
+z_index = 5
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1143892939]
+material = SubResource("ShaderMaterial_kgmex")
+collision_layer = 3
 script = ExtResource("1_juxdh")
+
+[node name="Change1" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=656339022]
+stream = ExtResource("3_405c5")
+volume_db = -15.0
+
+[node name="Spit" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=362599027]
+stream = ExtResource("4_qjulh")
+volume_db = -15.0
+
+[node name="Tongue" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=1282274138]
+stream = ExtResource("5_6gc6r")
+volume_db = -10.0
+
+[node name="TakeDamage" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=911374515]
+stream = ExtResource("6_7c0pg")
+volume_db = -10.0
+
+[node name="Tongue2" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=517965873]
+stream = ExtResource("6_vjsh3")
+volume_db = -10.0
+
+[node name="Change2" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=205193826]
+stream = ExtResource("4_i3mxk")
+volume_db = -15.0
 
 [node name="Head" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=30749720]
 z_index = 1
+material = ExtResource("3_kgmex")
 sprite_frames = SubResource("SpriteFrames_x6ack")
+
+[node name="Tongue" type="Sprite2D" parent="CharacterBody2D/Head" unique_id=1184205044]
+visible = false
+position = Vector2(5.46875, -43.007813)
+rotation = -3.1415925
+texture = ExtResource("21_qvmbc")
+centered = false
+flip_v = true
+
+[node name="TongueTip" type="Sprite2D" parent="CharacterBody2D/Head" unique_id=2019464111]
+visible = false
+position = Vector2(0, -79)
+texture = ExtResource("22_qjulh")
+centered = false
+offset = Vector2(-5.5, -12)
+
+[node name="TongueCast" type="ShapeCast2D" parent="CharacterBody2D/Head" unique_id=2145161002]
+visible = false
+position = Vector2(0, -45)
+enabled = false
+shape = SubResource("CircleShape2D_qvmbc")
+target_position = Vector2(0, -180)
+collision_mask = 0
+
+[node name="Marker2D" type="Marker2D" parent="CharacterBody2D/Head" unique_id=109385636]
+position = Vector2(0, -43)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1550750567]
 z_index = 10
@@ -39,21 +155,35 @@ shape = SubResource("CapsuleShape2D_6l7je")
 
 [node name="Torso" type="Sprite2D" parent="CharacterBody2D" unique_id=297274458]
 z_index = 1
+material = ExtResource("3_kgmex")
 texture = ExtResource("3_08u7w")
 
 [node name="FrontLeftLeg" type="Sprite2D" parent="CharacterBody2D" unique_id=823085229]
+material = ExtResource("3_kgmex")
 position = Vector2(-1, 0)
 texture = ExtResource("4_kgmex")
 
 [node name="FrontRightLeg" type="Sprite2D" parent="CharacterBody2D" unique_id=873497369]
+material = ExtResource("3_kgmex")
 position = Vector2(1, 0)
 texture = ExtResource("5_2xbkd")
 
 [node name="BackLeftLeg" type="Sprite2D" parent="CharacterBody2D" unique_id=2346635]
+material = ExtResource("3_kgmex")
 texture = ExtResource("6_3vpsw")
 
 [node name="BackRightLeg" type="Sprite2D" parent="CharacterBody2D" unique_id=908483726]
+material = ExtResource("3_kgmex")
 texture = ExtResource("7_m62uw")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1096316581]
 script = ExtResource("8_4qbli")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="CharacterBody2D" unique_id=809061654]
+
+[node name="Particles" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1738975842]
+visible = false
+z_index = 8
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_vjsh3")
+animation = &"Base"

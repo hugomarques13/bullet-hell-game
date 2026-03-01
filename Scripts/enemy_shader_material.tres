@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b603t8c76bik3"]
+
+[ext_resource type="Shader" uid="uid://dul3rohiqlkub" path="res://Scripts/player.gdshader" id="1_oycjy"]
+
+[resource]
+shader = ExtResource("1_oycjy")
+shader_parameter/invert_colors = true

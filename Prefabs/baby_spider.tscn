@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bs7qyj0yp6pc2"]
+
+[ext_resource type="Script" uid="uid://daqll4tifxnlj" path="res://Scripts/baby_spider.gd" id="1_ef7dt"]
+[ext_resource type="Material" uid="uid://ligp26e34cqq" path="res://Scripts/baby_spiders.tres" id="1_uxlt3"]
+[ext_resource type="Texture2D" uid="uid://dxrae86h0n2b4" path="res://Sprites/Baby Spiders/fabricio_corpo.png" id="2_ef7dt"]
+[ext_resource type="Texture2D" uid="uid://cmderv7p3splk" path="res://Sprites/Baby Spiders/fab1.png" id="3_6y3kq"]
+[ext_resource type="Texture2D" uid="uid://c0140tfyn3p4g" path="res://Sprites/Baby Spiders/fab2.png" id="4_jmjkf"]
+[ext_resource type="Texture2D" uid="uid://b1688kexjf6hr" path="res://Sprites/Baby Spiders/fab3.png" id="5_00i3g"]
+[ext_resource type="Texture2D" uid="uid://cqppyt4khwu7" path="res://Sprites/Baby Spiders/fab4.png" id="6_lq5t4"]
+[ext_resource type="Texture2D" uid="uid://crjv4jutv3au1" path="res://Sprites/Baby Spiders/fab5.png" id="7_f2rn4"]
+[ext_resource type="Texture2D" uid="uid://dx4jwv5uirmx7" path="res://Sprites/Baby Spiders/fab6.png" id="8_ac6kv"]
+[ext_resource type="Texture2D" uid="uid://cc81qefgws8m" path="res://Sprites/Baby Spiders/fab7.png" id="9_f6464"]
+[ext_resource type="Texture2D" uid="uid://1r4dhscma083" path="res://Sprites/Baby Spiders/fab8.png" id="10_3bigg"]
+[ext_resource type="Texture2D" uid="uid://crdgf1cbl2ysf" path="res://Sprites/Baby Spiders/fabricio_boca.png" id="11_c1lba"]
+[ext_resource type="Texture2D" uid="uid://c7xorc4y1ve6g" path="res://Sprites/Baby Spiders/fabricio_boca2.png" id="12_uvsrq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ewk0"]
+radius = 9.0
+height = 44.0
+
+[node name="BabySpider" type="CharacterBody2D" unique_id=1927734952]
+collision_layer = 3
+script = ExtResource("1_ef7dt")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1738064669]
+z_index = 1
+material = ExtResource("1_uxlt3")
+texture = ExtResource("2_ef7dt")
+
+[node name="A1" type="Sprite2D" parent="." unique_id=425640709]
+material = ExtResource("1_uxlt3")
+texture = ExtResource("3_6y3kq")
+
+[node name="A2" type="Sprite2D" parent="." unique_id=1480122207]
+material = ExtResource("1_uxlt3")
+texture = ExtResource("4_jmjkf")
+
+[node name="A3" type="Sprite2D" parent="." unique_id=796928609]
+material = ExtResource("1_uxlt3")
+texture = ExtResource("5_00i3g")
+
+[node name="A4" type="Sprite2D" parent="." unique_id=955178822]
+material = ExtResource("1_uxlt3")
+texture = ExtResource("6_lq5t4")
+
+[node name="B1" type="Sprite2D" parent="." unique_id=453432741]
+material = ExtResource("1_uxlt3")
+texture = ExtResource("7_f2rn4")
+
+[node name="B2" type="Sprite2D" parent="." unique_id=1914468986]
+material = ExtResource("1_uxlt3")
+texture = ExtResource("8_ac6kv")
+
+[node name="B3" type="Sprite2D" parent="." unique_id=172699658]
+material = ExtResource("1_uxlt3")
+texture = ExtResource("9_f6464")
+
+[node name="B4" type="Sprite2D" parent="." unique_id=1511810863]
+material = ExtResource("1_uxlt3")
+texture = ExtResource("10_3bigg")
+
+[node name="M1" type="Sprite2D" parent="." unique_id=178216888]
+material = ExtResource("1_uxlt3")
+texture = ExtResource("11_c1lba")
+
+[node name="M2" type="Sprite2D" parent="." unique_id=341715545]
+material = ExtResource("1_uxlt3")
+texture = ExtResource("12_uvsrq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=616748816]
+visible = false
+position = Vector2(1, -2)
+shape = SubResource("CapsuleShape2D_7ewk0")
+
+[node name="HeadProjectileMarker" type="Marker2D" parent="." unique_id=14735069]
+position = Vector2(1, 19)
+
+[node name="HeadBallMarker" type="Marker2D" parent="." unique_id=49258882]
+position = Vector2(1, 23)

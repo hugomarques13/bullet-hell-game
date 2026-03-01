@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://de21xu4xdsuti"]
+
+[ext_resource type="Script" uid="uid://b3g1il8f6hiwu" path="res://Scripts/basic_bullet.gd" id="1_2uiop"]
+[ext_resource type="Texture2D" uid="uid://iphrrjvbka0n" path="res://Sprites/Player/tiro.png" id="2_2uiop"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yo3a8"]
+radius = 5.0
+height = 18.0
+
+[sub_resource type="Shader" id="Shader_u7u8y"]
+code = "shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12i2u"]
+shader = SubResource("Shader_u7u8y")
+shader_parameter/invert_colors = false
+
+[node name="Player Bullet" type="Area2D" unique_id=181077927]
+z_index = 10
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_2uiop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1543000956]
+z_index = 2
+shape = SubResource("CapsuleShape2D_yo3a8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1775920396]
+material = SubResource("ShaderMaterial_12i2u")
+texture = ExtResource("2_2uiop")

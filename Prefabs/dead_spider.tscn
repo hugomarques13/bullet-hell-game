@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bj3dujj6kmuhr"]
+
+[ext_resource type="Script" uid="uid://dgog00x8pjqwv" path="res://Scripts/dead_spider.gd" id="1_1s35w"]
+[ext_resource type="Shader" uid="uid://dul3rohiqlkub" path="res://Scripts/player.gdshader" id="1_w5hqq"]
+[ext_resource type="Texture2D" uid="uid://btgyu5qfikc5u" path="res://Sprites/Baby Spiders/fabricio_descanse_em_paz.png" id="3_1s35w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oyb3p"]
+shader = ExtResource("1_w5hqq")
+shader_parameter/invert_colors = false
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ok4c"]
+radius = 31.415749
+height = 64.38237
+
+[node name="DeadSpider" type="Area2D" unique_id=1079339724]
+z_index = 1
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_1s35w")
+metadata/IsTongueable = true
+
+[node name="FabricioCorpo" type="Sprite2D" parent="." unique_id=725446885]
+material = SubResource("ShaderMaterial_oyb3p")
+texture = ExtResource("3_1s35w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=989829288]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_3ok4c")

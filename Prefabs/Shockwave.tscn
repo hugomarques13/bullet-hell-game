@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cjjhahku6pdl6"]
+
+[ext_resource type="Texture2D" uid="uid://cge2uiwhrq83o" path="res://Sprites/Player/tiroshockwave.png" id="1_g8v2p"]
+
+[node name="Tiroshockwave" type="Sprite2D" unique_id=1752190372]
+texture = ExtResource("1_g8v2p")

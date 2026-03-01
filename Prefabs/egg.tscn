@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://syapp26dolkk"]
+
+[ext_resource type="Script" uid="uid://dngse6chqpo04" path="res://Scripts/egg.gd" id="1_clg16"]
+[ext_resource type="Texture2D" uid="uid://cumqivy8q88lu" path="res://Sprites/Baby Spiders/O-VOS.png" id="1_lhsjm"]
+
+[sub_resource type="Shader" id="Shader_mnft5"]
+code = "shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clg16"]
+shader = SubResource("Shader_mnft5")
+shader_parameter/invert_colors = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1mdd"]
+atlas = ExtResource("1_lhsjm")
+region = Rect2(0, 0, 60, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vbwt"]
+atlas = ExtResource("1_lhsjm")
+region = Rect2(60, 0, 60, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omrfm"]
+atlas = ExtResource("1_lhsjm")
+region = Rect2(120, 0, 60, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v3ok"]
+atlas = ExtResource("1_lhsjm")
+region = Rect2(180, 0, 60, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1uwe"]
+atlas = ExtResource("1_lhsjm")
+region = Rect2(240, 0, 60, 57)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3wumb"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_g1mdd")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_8vbwt")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_omrfm")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_7v3ok")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_h1uwe")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b2qll"]
+radius = 21.0
+height = 42.0
+
+[node name="Egg" type="CharacterBody2D" unique_id=118005728]
+z_index = 10
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_clg16")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2108012514]
+material = SubResource("ShaderMaterial_clg16")
+sprite_frames = SubResource("SpriteFrames_3wumb")
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=39042177]
+visible = false
+z_index = 10
+shape = SubResource("CapsuleShape2D_b2qll")

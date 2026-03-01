@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dwsdh6vwl7osv"]
+
+[ext_resource type="Texture2D" uid="uid://w8rj2rikbiae" path="res://Sprites/menu.png" id="1_8l4an"]
+[ext_resource type="Texture2D" uid="uid://behdbc37l7rkj" path="res://Sprites/play1.png" id="2_n15yj"]
+[ext_resource type="Script" uid="uid://dmnmql3i04ml6" path="res://Scripts/playButton.gd" id="3_serqi"]
+
+[node name="TitleScreen" type="Control" unique_id=223748974]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2074594321]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8l4an")
+
+[node name="Button" type="Button" parent="." unique_id=480169173]
+layout_mode = 0
+offset_left = 465.43137
+offset_top = 416.2452
+offset_right = 734.4314
+offset_bottom = 512.24524
+focus_mode = 0
+icon = ExtResource("2_n15yj")
+flat = true
+script = ExtResource("3_serqi")
+
+[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

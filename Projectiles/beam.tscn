@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://d5q232bttva4"]
+
+[ext_resource type="Script" uid="uid://duolfo7gix5ax" path="res://Scripts/beam.gd" id="1_tdmdy"]
+[ext_resource type="Texture2D" uid="uid://blnlt6wcbbvb2" path="res://Sprites/Projectiles/laser1.png" id="1_tju6q"]
+[ext_resource type="Texture2D" uid="uid://cjosspcujntn0" path="res://Sprites/Projectiles/laser2.png" id="2_tdmdy"]
+[ext_resource type="Texture2D" uid="uid://dcsanm0ruw33k" path="res://Sprites/Projectiles/laser3.png" id="3_0yhq5"]
+[ext_resource type="Texture2D" uid="uid://cr5nff3cjraje" path="res://Sprites/Projectiles/caixa_do_ataque_do_aviso_do_ovo_do_bicho_cores.png" id="4_bqfrj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uv1v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tju6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tdmdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0yhq5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw1wa"]
+size = Vector2(40, 1175)
+
+[sub_resource type="Shader" id="Shader_63s3k"]
+code = "shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l7ymb"]
+shader = SubResource("Shader_63s3k")
+shader_parameter/invert_colors = false
+
+[node name="Beam" type="Area2D" unique_id=576239909]
+z_index = 5
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("1_tdmdy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1994019985]
+visible = false
+z_index = 10
+position = Vector2(-1, 582.5)
+sprite_frames = SubResource("SpriteFrames_uv1v6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1560150843]
+position = Vector2(0, 582.5)
+shape = SubResource("RectangleShape2D_bw1wa")
+disabled = true
+
+[node name="WarningBox" type="Sprite2D" parent="." unique_id=814053236]
+material = SubResource("ShaderMaterial_l7ymb")
+position = Vector2(1, 471)
+texture = ExtResource("4_bqfrj")

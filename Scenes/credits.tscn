@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dri45ucgx4uyf"]
+
+[ext_resource type="Script" uid="uid://5jqbqifjntmq" path="res://Scripts/credits.gd" id="1_ccovl"]
+[ext_resource type="Texture2D" uid="uid://cu5tae17e12x3" path="res://Sprites/credits.png" id="2_ccovl"]
+[ext_resource type="Texture2D" uid="uid://b65paklk8qc4a" path="res://Sprites/press_anything.png" id="4_1bamb"]
+[ext_resource type="AudioStream" uid="uid://b3bssli728oea" path="res://Sounds/Eating sound.wav" id="4_xelri"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iqfv5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ccovl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ccovl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="Credits" type="Node2D" unique_id=1298921498]
+script = ExtResource("1_ccovl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1260468414]
+sprite_frames = SubResource("SpriteFrames_iqfv5")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1926488983]
+
+[node name="Mousefordummies" type="Sprite2D" parent="." unique_id=532488118]
+visible = false
+position = Vector2(532, 267)
+
+[node name="PressAnything" type="Sprite2D" parent="." unique_id=1286308970]
+visible = false
+position = Vector2(1, 268)
+texture = ExtResource("4_1bamb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1755670988]
+stream = ExtResource("4_xelri")
+volume_db = 10.0
+autoplay = true

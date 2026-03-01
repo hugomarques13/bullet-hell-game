@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://lgc4jytffw76"]
+
+[ext_resource type="Material" uid="uid://b603t8c76bik3" path="res://Scripts/enemy_shader_material.tres" id="1_glnv7"]
+[ext_resource type="Texture2D" uid="uid://dixnlpm2x0yli" path="res://Sprites/Projectiles/repolho.png" id="2_go6mh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tjhj"]
+atlas = ExtResource("2_go6mh")
+region = Rect2(0, 0, 81, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rsss"]
+atlas = ExtResource("2_go6mh")
+region = Rect2(81, 0, 81, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_277i6"]
+atlas = ExtResource("2_go6mh")
+region = Rect2(162, 0, 81, 81)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ri0x3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tjhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rsss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_277i6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.5
+}]
+
+[node name="GrowingBall" type="AnimatedSprite2D" unique_id=1793448969]
+z_index = -1
+material = ExtResource("1_glnv7")
+sprite_frames = SubResource("SpriteFrames_ri0x3")
+frame = 2
+frame_progress = 1.0

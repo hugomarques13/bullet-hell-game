@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dqtkpsjerybhc"
+path="res://.godot/imported/Spider aggro.wav-f9c78a0628484e94380ea57f2e1b5604.sample"
+
+[deps]
+
+source_file="res://Sounds/Spider aggro.wav"
+dest_files=["res://.godot/imported/Spider aggro.wav-f9c78a0628484e94380ea57f2e1b5604.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

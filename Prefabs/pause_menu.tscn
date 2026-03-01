@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://mt3bjqljfpii"]
+
+[ext_resource type="PackedScene" uid="uid://cmof4063tfcov" path="res://prefabs/pauseMenu.tscn" id="1_hf53u"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1585530705]
+visible = false
+
+[node name="PauseMenu" parent="." unique_id=304498256 instance=ExtResource("1_hf53u")]
+metadata/texto = &"Use the ventilation to go up pressing W and then try to do this again altering the rooms"

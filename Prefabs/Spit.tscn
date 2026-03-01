@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bbh2twjewq5c8"]
+
+[ext_resource type="Texture2D" uid="uid://cm21s2od6b2f6" path="res://Sprites/Player/tiroguspe.png" id="1_dsarg"]
+
+[node name="Tiroguspe" type="Sprite2D" unique_id=286391604]
+texture = ExtResource("1_dsarg")

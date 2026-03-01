@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://chx0l24qtdis1"]
+
+[ext_resource type="Script" uid="uid://b3g1il8f6hiwu" path="res://Scripts/basic_bullet.gd" id="1_7icc1"]
+[ext_resource type="Texture2D" uid="uid://dixnlpm2x0yli" path="res://Sprites/Projectiles/repolho.png" id="2_agxj2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mmphn"]
+radius = 15.0
+
+[sub_resource type="Shader" id="Shader_s24r4"]
+code = "shader_type canvas_item;
+
+uniform bool invert_colors = true;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+
+    if (invert_colors) {
+        COLOR = vec4(1.0 - color.rgb, color.a);
+    } else {
+        COLOR = color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y6dx"]
+shader = SubResource("Shader_s24r4")
+shader_parameter/invert_colors = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7icc1"]
+atlas = ExtResource("2_agxj2")
+region = Rect2(81, 0, 81, 81)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uwggd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7icc1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Medium Bullet" type="Area2D" unique_id=181077927]
+z_index = 10
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_7icc1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1543000956]
+z_index = 2
+shape = SubResource("CircleShape2D_mmphn")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=348708651]
+material = SubResource("ShaderMaterial_3y6dx")
+scale = Vector2(0.495, 0.495)
+sprite_frames = SubResource("SpriteFrames_uwggd")

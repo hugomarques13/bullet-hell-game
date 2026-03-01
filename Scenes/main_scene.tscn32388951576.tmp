@@ -1,0 +1,223 @@
+[gd_scene format=3 uid="uid://hp2b6531m2kq"]
+
+[ext_resource type="PackedScene" uid="uid://br5nqsmxho0b6" path="res://Prefabs/player.tscn" id="1_6l7je"]
+[ext_resource type="Material" uid="uid://b603t8c76bik3" path="res://Scripts/enemy_shader_material.tres" id="2_76v2p"]
+[ext_resource type="Texture2D" uid="uid://cbwuuboethyo5" path="res://Sprites/Enemy/a1.png" id="4_ioaeq"]
+[ext_resource type="Texture2D" uid="uid://bl4wk3rd075la" path="res://Sprites/Enemy/b1.png" id="5_7ewk0"]
+[ext_resource type="Texture2D" uid="uid://cjqhxxmdiayg4" path="res://Sprites/Enemy/bruno_sem_boca.png" id="5_lhp3t"]
+[ext_resource type="Texture2D" uid="uid://lm5oshwt04af" path="res://Sprites/Enemy/b2.png" id="6_lhp3t"]
+[ext_resource type="Texture2D" uid="uid://bqymevybregk7" path="res://Sprites/Enemy/b3.png" id="7_gnsmo"]
+[ext_resource type="Texture2D" uid="uid://dhh0mjo5vxlnm" path="res://Sprites/Enemy/b4.png" id="8_psl12"]
+[ext_resource type="Texture2D" uid="uid://btq4u2x7oic0a" path="res://Sprites/Enemy/a2.png" id="9_2ebs2"]
+[ext_resource type="Texture2D" uid="uid://dcgfniwmwiyyl" path="res://Sprites/Enemy/a3.png" id="10_oyb3p"]
+[ext_resource type="Texture2D" uid="uid://d04g4xurhr0k" path="res://Sprites/Enemy/a4.png" id="11_jvnna"]
+[ext_resource type="Texture2D" uid="uid://dwlyv67l0ocn6" path="res://Sprites/Backgrounds/fundoWIP.png" id="12_drdnd"]
+[ext_resource type="Script" uid="uid://ckhfl1cd0rhpu" path="res://Scripts/enemy_character.gd" id="12_ioaeq"]
+[ext_resource type="Texture2D" uid="uid://cqav4jiy3f7js" path="res://Sprites/Enemy/buna_do_broca.png" id="14_gnsmo"]
+[ext_resource type="Texture2D" uid="uid://dlwdo86vg68o3" path="res://Sprites/Enemy/boca_do_bruno.png" id="15_psl12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
+size = Vector2(1152, 1296)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv6wh"]
+size = Vector2(8.75, 1300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6ack"]
+size = Vector2(8.5, 1173)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_psl12"]
+radius = 28.0
+height = 138.0
+
+[node name="MainScene" type="Node2D" unique_id=1578074869]
+
+[node name="Player" parent="." unique_id=233873264 instance=ExtResource("1_6l7je")]
+position = Vector2(576, 324)
+
+[node name="CameraBounds" type="Area2D" parent="." unique_id=1007109586]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=1431407369]
+visible = false
+position = Vector2(576, 0)
+shape = SubResource("RectangleShape2D_6l7je")
+debug_color = Color(0.77254903, 0.44313726, 0.12156863, 0.41960785)
+
+[node name="Collisions" type="StaticBody2D" parent="." unique_id=1751032166]
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" unique_id=871227670]
+position = Vector2(-4, -1)
+shape = SubResource("RectangleShape2D_jv6wh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions" unique_id=1748542900]
+position = Vector2(1156.25, -1)
+shape = SubResource("RectangleShape2D_jv6wh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions" unique_id=1563242226]
+position = Vector2(576.5, 652.25)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_x6ack")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions" unique_id=2012364356]
+position = Vector2(574, -652)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_x6ack")
+
+[node name="FundoWip" type="Sprite2D" parent="." unique_id=2143615996]
+z_index = -10
+position = Vector2(576, 0)
+texture = ExtResource("12_drdnd")
+
+[node name="Spider" type="CharacterBody2D" parent="." unique_id=640562580]
+z_index = 6
+position = Vector2(580, 0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("12_ioaeq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spider" unique_id=1962344472]
+visible = false
+z_index = 10
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_psl12")
+
+[node name="Body" type="Sprite2D" parent="Spider" unique_id=1802428478]
+z_index = 1
+material = ExtResource("2_76v2p")
+texture = ExtResource("5_lhp3t")
+
+[node name="A1" type="Sprite2D" parent="Spider" unique_id=2061444504]
+material = ExtResource("2_76v2p")
+texture = ExtResource("4_ioaeq")
+
+[node name="B1" type="Sprite2D" parent="Spider" unique_id=96256061]
+material = ExtResource("2_76v2p")
+texture = ExtResource("5_7ewk0")
+
+[node name="B2" type="Sprite2D" parent="Spider" unique_id=1626352588]
+material = ExtResource("2_76v2p")
+texture = ExtResource("6_lhp3t")
+
+[node name="B3" type="Sprite2D" parent="Spider" unique_id=161019553]
+material = ExtResource("2_76v2p")
+texture = ExtResource("7_gnsmo")
+
+[node name="B4" type="Sprite2D" parent="Spider" unique_id=539380739]
+material = ExtResource("2_76v2p")
+texture = ExtResource("8_psl12")
+
+[node name="A2" type="Sprite2D" parent="Spider" unique_id=251184694]
+material = ExtResource("2_76v2p")
+texture = ExtResource("9_2ebs2")
+
+[node name="A3" type="Sprite2D" parent="Spider" unique_id=1645235339]
+material = ExtResource("2_76v2p")
+texture = ExtResource("10_oyb3p")
+
+[node name="A4" type="Sprite2D" parent="Spider" unique_id=1073514750]
+material = ExtResource("2_76v2p")
+texture = ExtResource("11_jvnna")
+
+[node name="M1" type="Sprite2D" parent="Spider" unique_id=1541370894]
+material = ExtResource("2_76v2p")
+texture = ExtResource("14_gnsmo")
+
+[node name="M2" type="Sprite2D" parent="Spider" unique_id=400215018]
+material = ExtResource("2_76v2p")
+texture = ExtResource("15_psl12")
+
+[node name="HeadProjectileMarker" type="Marker2D" parent="Spider" unique_id=2130864782]
+position = Vector2(0, 57)
+
+[node name="HeadBallMarker" type="Marker2D" parent="Spider" unique_id=321265035]
+position = Vector2(0, 65)
+
+[node name="ArenaMarkers" type="Node2D" parent="." unique_id=1665046257]
+
+[node name="Top" type="Marker2D" parent="ArenaMarkers" unique_id=1840107727]
+position = Vector2(574, -652)
+
+[node name="Right" type="Marker2D" parent="ArenaMarkers" unique_id=1053546866]
+position = Vector2(1156, 0)
+
+[node name="Left" type="Marker2D" parent="ArenaMarkers" unique_id=1609571635]
+
+[node name="Bottom" type="Marker2D" parent="ArenaMarkers" unique_id=1413157689]
+position = Vector2(574, 652)
+
+[node name="EggSpawns" type="Node2D" parent="ArenaMarkers" unique_id=1423650687]
+
+[node name="1" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=2074097209]
+position = Vector2(147, -111)
+
+[node name="2" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1870348969]
+position = Vector2(213, -468)
+
+[node name="3" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=810527674]
+position = Vector2(515, -266)
+
+[node name="4" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1822235725]
+position = Vector2(753, -471)
+
+[node name="5" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=416627923]
+position = Vector2(1008, -169)
+
+[node name="6" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1606404459]
+position = Vector2(1002, 125)
+
+[node name="7" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=526959585]
+position = Vector2(823, 420)
+
+[node name="8" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1380913285]
+position = Vector2(592, 186)
+
+[node name="9" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=812255087]
+position = Vector2(431, 439)
+
+[node name="10" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=465676095]
+position = Vector2(161, 150)
+
+[node name="11" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1988390579]
+position = Vector2(117, 534)
+
+[node name="12" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=277464112]
+position = Vector2(1062, 565)
+
+[node name="13" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=1660647438]
+position = Vector2(1048, -553)
+
+[node name="14" type="Marker2D" parent="ArenaMarkers/EggSpawns" unique_id=260734909]
+position = Vector2(75, -326)
+
+[node name="WebSpawns" type="Node2D" parent="ArenaMarkers" unique_id=2083111482]
+
+[node name="1" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=480679636]
+position = Vector2(202, 0)
+
+[node name="2" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=1117152311]
+position = Vector2(267, 189)
+
+[node name="3" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=1440713930]
+position = Vector2(450, 323)
+
+[node name="4" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=1582422909]
+position = Vector2(735, 338)
+
+[node name="5" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=393022683]
+position = Vector2(966, 199)
+
+[node name="6" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=509985518]
+position = Vector2(1001, -2)
+
+[node name="7" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=1116315710]
+position = Vector2(957, -158)
+
+[node name="8" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=500321854]
+position = Vector2(742, -265)
+
+[node name="9" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=77600085]
+position = Vector2(506, -279)
+
+[node name="10" type="Marker2D" parent="ArenaMarkers/WebSpawns" unique_id=612986339]
+position = Vector2(305, -220)
